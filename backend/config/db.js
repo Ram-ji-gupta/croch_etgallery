@@ -138,10 +138,41 @@ function simulateQuery(sql, params = []) {
   }
 
   // 10. SELECT orders
-  if (sqlNormalized.startsWith("select * from orders")) {
+  if (sqlNormalized.startsWith("select") && sqlNormalized.includes("from orders")) {
     const sorted = [...data.orders].sort((a, b) => b.id - a.id);
-    return [sorted];
+
+    // Normalize total in fallback DB. Some seeded/updated records have "undefined" strings.
+    const normalized = sorted.map(o => {
+      let t = o.total;
+      let status = o.status;
+
+      // If total is invalid but status looks numeric, assume fields were corrupted and
+      // the amount ended up in `status`.
+      const tInvalid = t === undefined || t === null || t === 'undefined' || t === 'NaN' || t === '';
+      const statusLooksNumeric = status !== undefined && status !== null && status !== '' && !Number.isNaN(Number(status));
+
+      if (tInvalid && statusLooksNumeric) {
+        return {
+          ...o,
+          total: String(Number(status)),
+          status: 'Pending'
+        };
+      }
+
+      if (tInvalid) {
+        return { ...o, total: '0.00' };
+      }
+
+      const n = Number(t);
+      if (Number.isFinite(n)) return { ...o, total: String(n) };
+
+      return o;
+    });
+
+    return [normalized];
   }
+
+
 
   // 11. INSERT order
   if (sqlNormalized.startsWith("insert into orders")) {
@@ -175,7 +206,8 @@ function simulateQuery(sql, params = []) {
     return [{ affectedRows: 0 }];
   }
 
-  console.warn("Unhandled simulated query:", sql, params);
+  // Avoid noisy logs in dev; return an empty result set for unknown queries.
+  // This is mainly for the local JSON fallback mode.
   return [[]];
 }
 

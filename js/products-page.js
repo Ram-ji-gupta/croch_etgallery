@@ -14,12 +14,22 @@
       .replaceAll("'", '&#039;');
   }
 
+  function normalizeCategory(str) {
+    return String(str || "")
+      // NBSP -> normal space
+      .replaceAll("\u00A0", " ")
+      // collapse multiple whitespace
+      .replaceAll(/\s+/g, " ")
+      .trim();
+  }
+
   function getSelectedCategory(selectEl) {
     if (!selectEl) return "";
     const selected = selectEl.options[selectEl.selectedIndex];
-    if (selected?.value !== undefined) return selected.value.trim();
-    return (selected?.text || '').trim();
+    const raw = selected?.value !== undefined ? selected.value : (selected?.text || "");
+    return normalizeCategory(raw);
   }
+
 
   async function loadAndRenderProducts() {
     const grid = document.getElementById('shopProducts');
@@ -84,9 +94,11 @@
 
     const getFiltered = () => {
       const q = (searchInput?.value || '').trim().toLowerCase();
-      const cat = getSelectedCategory(categoryFilter).toLowerCase();
+      const cat = normalizeCategory(getSelectedCategory(categoryFilter)).toLowerCase();
 
+      const selectedCat = cat;
       return products.filter(p => {
+
         const name = String(p.name || '').toLowerCase();
         const desc = String(p.description || '').toLowerCase();
         const category = String(p.category || '').toLowerCase();
@@ -96,13 +108,38 @@
           desc.includes(q) ||
           (category && category.includes(q));
 
-        const matchesCategory = !cat ||
-          (category && category.includes(cat)) ||
-          (!category && name.includes(cat));
+        const matchesCategory = !selectedCat ||
+          category === selectedCat ||
+          // partial match
+          category.includes(selectedCat);
 
         return matchesSearch && matchesCategory;
+
+
       });
     };
+
+    // Read query params (q, cat) before initial render
+    const params = new URLSearchParams(window.location.search);
+    const qParam = params.get('q');
+    if (qParam && searchInput) {
+      searchInput.value = String(qParam);
+    }
+
+    const catParam = params.get('cat');
+    if (catParam && categoryFilter) {
+      const normalizedCatParam = normalizeCategory(catParam).toLowerCase();
+      for (let i = 0; i < categoryFilter.options.length; i++) {
+        const opt = categoryFilter.options[i];
+        const optValue = normalizeCategory(opt.value).toLowerCase();
+        const optText = normalizeCategory(opt.text).toLowerCase();
+
+        if (optValue === normalizedCatParam || optText === normalizedCatParam) {
+          categoryFilter.selectedIndex = i;
+          break;
+        }
+      }
+    }
 
     // Initial render
     render(getFiltered());
@@ -115,19 +152,7 @@
       categoryFilter.addEventListener('change', () => render(getFiltered()));
     }
 
-    // Read category query param if present from homepage click
-    const params = new URLSearchParams(window.location.search);
-    const catParam = params.get('cat');
-    if (catParam && categoryFilter) {
-      for (let i = 0; i < categoryFilter.options.length; i++) {
-        if (categoryFilter.options[i].value.toLowerCase() === catParam.toLowerCase() ||
-            categoryFilter.options[i].text.toLowerCase() === catParam.toLowerCase()) {
-          categoryFilter.selectedIndex = i;
-          render(getFiltered());
-          break;
-        }
-      }
-    }
+
   }
 
   function init() {

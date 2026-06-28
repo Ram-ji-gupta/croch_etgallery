@@ -4,71 +4,118 @@
   <title>Orders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .btn-secondary{background:#444;color:#fff;border:none;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:9999}
+    .modal-backdrop.show{display:flex}
+    .modal{width:min(520px,92vw);background:rgba(255,255,255,.95);border-radius:18px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    html.dark-mode .modal{background:rgba(0,0,0,.55);color:#fff}
+    .field{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+    .field label{font-weight:800}
+    .field select,.field input{padding:10px 12px;border-radius:12px;border:1px solid rgba(0,0,0,.2)}
+    html.dark-mode .field select, html.dark-mode .field input{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15);color:#fff}
+    .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
+  </style>
 </head>
 <body>
 <div class="mobile-header">
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
-<h2>🧶 WoolCraft</h2>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <h2>🧶 WoolCraft</h2>
 </div>
 
 <div class="sidebar">
-  <h2 id="desktopLogo">
-🧶 WoolCraft
-</h2>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="orders.html">Orders</a>
-    <button onclick="logout()">Logout</button>
+  <h2 id="desktopLogo">🧶 WoolCraft</h2>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="orders.html">Orders</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+  <div class="content">
+  <h1>Customer Orders</h1>
+  <button class="save-btn" onclick="window.location='customers.html'">Customers</button>
+  <button class="save-btn" onclick="window.location='products.html'">Products</button>
+
+  <!-- Order Status Filter -->
+  <div class="bulk-status-bar" style="margin-top:16px;">
+    <div class="bulk-status-left">
+      <label for="orderStatusFilter">Filter by status:</label>
+      <select id="orderStatusFilter">
+        <option value="All">All</option>
+        <option value="Pending">Pending</option>
+        <option value="Processing">Processing</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+    </div>
+    <div class="bulk-status-right">
+      <button class="save-btn" onclick="applyOrderStatusFilter()">Apply</button>
+    </div>
   </div>
 
-<div class="content">
-    <h1>Customer Orders</h1>
-    <button class="save-btn" onclick="window.location='customers.html'">Customers</button>
-    <button class="save-btn" onclick="window.location='products.html'">Products</button>
+  <div class="bulk-status-bar">
+    <div class="bulk-status-left">
+      <label for="bulkStatusSelect">Change status for selected orders:</label>
+      <select id="bulkStatusSelect">
+        <option value="Pending">Pending</option>
+        <option value="Processing">Processing</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+    </div>
+    <div class="bulk-status-right">
+      <button class="save-btn" onclick="updateStatusesForSelected()">Update Selected</button>
+    </div>
+  </div>
 
+  <div id="ordersList"></div>
+</div>
 
-    <div class="bulk-status-bar">
+<!-- Order Edit Modal -->
+<div class="modal-backdrop" id="orderEditBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="orderEditTitle">
+    <h2 id="orderEditTitle">Edit Order</h2>
 
-      <div class="bulk-status-left">
-        <label for="bulkStatusSelect">Change status for selected orders:</label>
-        <select id="bulkStatusSelect">
+    <form onsubmit="event.preventDefault(); saveOrderEdit();">
+      <input type="hidden" id="editOrderId" />
+
+      <div class="field">
+        <label for="editOrderStatus">Status</label>
+        <select id="editOrderStatus" required>
           <option value="Pending">Pending</option>
           <option value="Processing">Processing</option>
           <option value="Shipped">Shipped</option>
           <option value="Delivered">Delivered</option>
         </select>
       </div>
-      <div class="bulk-status-right">
-        <button class="save-btn" onclick="updateStatusesForSelected()">Update Selected</button>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="closeOrderEdit()">Cancel</button>
+        <button type="submit" class="save-btn">Save</button>
       </div>
-    </div>
-
-    <div id="ordersList"></div>
+    </form>
   </div>
+</div>
 
-  <script src="js/config.js"></script>
+<script src="js/config.js"></script>
 <script src="js/admin.js"></script>
-  <script src="js/orders.js"></script>
-  <script src="js/sidebar.js"></script>
-  <script src="js/globalSettings.js"></script>
-  <script src="js/auth.js"></script>
+<script src="js/orders.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/globalSettings.js"></script>
+<script src="js/auth.js"></script>
 
-  <script>
-function toggleDarkMode(){
-  const isDark = localStorage.getItem("darkMode")==="true";
-  localStorage.setItem("darkMode", String(!isDark));
-  document.body.classList.toggle("dark-mode", !isDark);
-}
-  </script>
+<script>
+  function toggleDarkMode(){
+    const isDark = localStorage.getItem("darkMode")==="true";
+    localStorage.setItem("darkMode", String(!isDark));
+    document.body.classList.toggle("dark-mode", !isDark);
+  }
 
-  <button class="save-btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-
-  <script>
-if(localStorage.getItem("darkMode")==="true"){
-  document.body.classList.add("dark-mode");
-}
+  if(localStorage.getItem("darkMode")==="true"){
+    document.body.classList.add("dark-mode");
+  }
 </script>
 
-
-
+<button class="save-btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
 </body>
 </html>
+

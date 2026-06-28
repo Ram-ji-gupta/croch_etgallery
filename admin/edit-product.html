@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<script>
-  // Redirect /admin/edit-product.html?... to clean URL preserving query string
-  if (window.location.pathname.endsWith('.html')) {
-    const cleanPath = window.location.pathname.replace('.html', '');
-    const newUrl = cleanPath + window.location.search;
-    window.location.replace(newUrl);
-  }
-</script>
+
     <title>Edit Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/admin.css">
@@ -52,14 +45,19 @@
         <input type="text" id="name" placeholder="Product Name">
 
         <select id="category">
-          <option value="Apparels">Apparels</option>
-          <option value="Knitted">Knitted</option>
-          <option value="Bags">Bags</option>
-          <option value="Decorative Accessories">Decorative Accessories</option>
-          <option value="Woven">Woven</option>
-          <option value="Hanging Decorations">Hanging Decorations</option>
-          <option value="Gift Sets">Gift Sets</option>
+            <option value="Bags">Bags</option>
+            <option value="Apparels">Apparels</option>
+            <option value="Knitted">Knitted</option>
+            <option value="Woven">Woven</option>
+            <option value="Decorative Accessories">Decorative Accessories</option>
+            <option value="Gift Sets">Gift Sets</option>
+            <option value="Hanging Decorations">Hanging Decorations</option>
+            <option value="Headbands">Headbands</option>
+            <option value="Wool Flowers">Wool Flowers</option>
+            <option value="Brooches">Brooches</option>
+            <option value="Kanha Dresses">Kanha Dresses</option>
         </select>
+
 
         <input type="number" id="price" placeholder="Price">
 
@@ -79,7 +77,7 @@
     </div>
 
     <script src="js/config.js"></script>
-<script src="js/admin.js"></script>
+    <script src="js/admin.js"></script>
     <script src="js/editProduct.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/globalSettings.js"></script>

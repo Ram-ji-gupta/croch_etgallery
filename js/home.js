@@ -38,4 +38,25 @@
   if (window.products && window.products.length > 0) {
     renderFeaturedProducts();
   }
+
+
+  function initHomeSearch() {
+    const input = document.getElementById('homeSearchInput');
+    const btn = document.getElementById('homeSearchBtn');
+    if (!input || !btn) return;
+
+    const run = () => {
+      const q = String(input.value || '').trim();
+      const params = new URLSearchParams();
+      if (q) params.set('q', q);
+      window.location.href = `products.html${params.toString() ? '?' + params.toString() : ''}`;
+    };
+
+    btn.addEventListener('click', run);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') run();
+    });
+  }
+
+  initHomeSearch();
 })();

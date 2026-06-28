@@ -3,6 +3,22 @@ const fs = require("fs");
 const path = require("path");
 const { body, validationResult } = require("express-validator");
 
+const deleteFileIfExists = (filePath) => {
+  return new Promise((resolve) => {
+    if (!filePath) return resolve();
+
+    fs.unlink(filePath, (err) => {
+      if (!err) return resolve();
+      // If the file is already missing, it's fine (common in repeated deletes/updates)
+      if (err.code === "ENOENT") return resolve();
+
+      console.log("File not deleted:", err.message);
+      resolve();
+    });
+  });
+};
+
+
 exports.productValidationRules = [
   body("name").trim().notEmpty().withMessage("Product name is required"),
   body("price").isFloat({ min: 0 }).withMessage("Price must be a positive number"),
@@ -70,6 +86,7 @@ exports.addProduct = async (req, res) => {
 // UPDATE PRODUCT
 exports.updateProduct = async (req, res) => {
   try {
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -90,11 +107,10 @@ exports.updateProduct = async (req, res) => {
       // Delete the old image if it changes
       if (oldProduct.image) {
         const oldImagePath = path.join(__dirname, "../uploads", oldProduct.image);
-        fs.unlink(oldImagePath, (err) => {
-          if (err) console.log("Old image not deleted:", err.message);
-        });
+        await deleteFileIfExists(oldImagePath);
       }
     }
+
 
     await db.query(
       "UPDATE products SET name = ?, price = ?, category = ?, stock = ?, image = ?, description = ? WHERE id = ?",
@@ -128,10 +144,9 @@ exports.deleteProduct = async (req, res) => {
     const product = rows[0];
     if (product.image) {
       const imagePath = path.join(__dirname, "../uploads", product.image);
-      fs.unlink(imagePath, (err) => {
-        if (err) console.log("Image not deleted:", err.message);
-      });
+      await deleteFileIfExists(imagePath);
     }
+
 
     await db.query("DELETE FROM products WHERE id = ?", [id]);
     res.json({ message: "Product Deleted Successfully" });

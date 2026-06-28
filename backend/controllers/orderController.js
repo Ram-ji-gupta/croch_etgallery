@@ -5,8 +5,27 @@ const db = require("../config/db");
 // ==========================
 exports.getOrders = async (req, res) => {
   try {
-    const [rows] = await db.query("SELECT * FROM orders ORDER BY id DESC");
-    res.json(rows);
+    const [rows] = await db.query(
+      "SELECT id, customer, phone, email, address, custom_requirement, status, created_at, total FROM orders ORDER BY id DESC"
+    );
+
+    // Normalize total to a consistent field so the admin UI can always read it.
+    // MySQL may return Decimal as string.
+    const normalized = rows.map(o => {
+      const t = o.total;
+      let totalNum = null;
+      if (t !== null && t !== undefined && t !== "") {
+        const n = Number(t);
+        totalNum = Number.isFinite(n) ? n : null;
+      }
+
+      return {
+        ...o,
+        total: totalNum === null ? o.total : totalNum
+      };
+    });
+
+    res.json(normalized);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -107,3 +126,23 @@ exports.updateOrderStatus = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+// ==========================
+// DELETE ORDER
+// ==========================
+exports.deleteOrder = async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+
+    const [result] = await db.query("DELETE FROM orders WHERE id = ?", [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    res.json({ message: "Order Deleted" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+

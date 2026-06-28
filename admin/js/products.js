@@ -114,42 +114,36 @@ console.log(error);
 
 function searchProducts(){
 
-const input =
-document.getElementById(
-"productSearch"
-);
-
+const input = document.getElementById("productSearch");
 const clearBtn = document.getElementById("clearSearchBtn");
+const categorySelect = document.getElementById("categoryFilter");
 
 if(!input) return;
 
-const keyword =
-input.value.toLowerCase();
+const keyword = input.value.toLowerCase();
+const selectedCategory = categorySelect?.value || "All";
 
 // show/hide clear button
 if(clearBtn){
-clearBtn.style.display = keyword ? "inline-block" : "none";
+  clearBtn.style.display = keyword ? "inline-block" : "none";
 }
 
-if(!keyword){
-// Empty search => show all
-return displayProducts(allProducts);
+let filtered = allProducts;
+
+// Category filter
+if(selectedCategory !== "All"){
+  filtered = filtered.filter(p => String(p.category || "") === selectedCategory);
 }
 
-const filtered =
-allProducts.filter(product=>
+// Keyword filter
+if(keyword){
+  filtered = filtered.filter(product =>
+    (product.name || "").toLowerCase().includes(keyword) ||
+    (product.category || "").toLowerCase().includes(keyword)
+  );
+}
 
-(product.name || "").toLowerCase().includes(keyword)
-
-||
-
-(product.category || "").toLowerCase().includes(keyword)
-
-);
-
-displayProducts(
-filtered
-);
+displayProducts(filtered);
 
 }
 
@@ -321,8 +315,12 @@ console.log(error);
 // ==========================
 
 function editProduct(id){
-    window.location = `edit-product?id=${id}`;
+    // Always navigate to the exact file that exists in /admin/
+    window.location.href = `edit-product.html?id=${id}`;
 }
+
+
+
 
 
 // ==========================

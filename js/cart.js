@@ -106,7 +106,11 @@ function renderCart() {
       <div class="cart-actions">
         <button type="button" data-action="decrease" data-index="${index}" aria-label="Decrease quantity">-</button>
         <button type="button" data-action="increase" data-index="${index}" aria-label="Increase quantity">+</button>
-        <button type="button" data-action="remove" data-index="${index}" aria-label="Remove item">🗑️</button>
+        <button type="button" data-action="remove" data-index="${index}" aria-label="Remove item">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+          </svg>
+        </button>
       </div>
     `;
 

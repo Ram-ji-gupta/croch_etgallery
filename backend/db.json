@@ -10,24 +10,6 @@
       "description": "Handmade wool bow in soft pink with a delicate white border, featuring intricate crochet lacework for a charming and elegant touch."
     },
     {
-      "id": 20,
-      "name": "Hair Clutcher",
-      "price": "299.00",
-      "category": "Apparels",
-      "stock": 10,
-      "image": "1782047414259-Hair Clutcher.webp",
-      "description": "Handmade wool hair accessory featuring crocheted sunflowers with yellow petals and brown centers, attached to braided strands for a natural, elegant look."
-    },
-    {
-      "id": 21,
-      "name": "Fluffy Cloud Scrunchie (Gagra)",
-      "price": "250.00",
-      "category": "Apparels",
-      "stock": 14,
-      "image": "1782389482660-Screenshot_2026-06-22_122857.png",
-      "description": "Handmade wool scrunchie with a soft, plush texture that adds cozy charm and a gentle hold to any hairstyle."
-    },
-    {
       "id": 22,
       "name": "Bloom Crochet Sunflower",
       "price": "250.00",
@@ -46,28 +28,10 @@
       "description": "Handmade crochet butterfly ornament in soft pink, white, and blue yarn, with delicate braided strands ending in tiny flower motifs for a whimsical touch."
     },
     {
-      "id": 24,
-      "name": "Cozy Bunny with Pink Scarf",
-      "price": "500.00",
-      "category": "Gift Sets",
-      "stock": 5,
-      "image": "1782048419457-WhatsApp Image 2026-06-03 at 7.30.03 PM (1).webp",
-      "description": "Handmade crochet bunny doll in soft white yarn, featuring long ears with pink details, stitched eyes and smile, and a cute pink scarf for added charm."
-    },
-    {
-      "id": 25,
-      "name": "Blooming Vines Crochet Planter",
-      "price": "350.00",
-      "category": "Hanging Decorations",
-      "stock": 10,
-      "image": "1782048660329-WhatsApp Image 2026-06-16 at 11.05.08 AM.webp",
-      "description": "Handmade yarn hanging planter featuring crocheted green vines with white flowers and yellow centers, suspended by sturdy cords for a charming, nature‑inspired décor piece."
-    },
-    {
       "id": 26,
       "name": "Elegant Red & White Khana Dress Set",
       "price": "650.00",
-      "category": "Gift Sets",
+      "category": "Kanha Dresses",
       "stock": 20,
       "image": "1782048918076-WhatsApp Image 2026-06-16 at 11.06.13 AM.webp",
       "description": "Handmade crochet khana dress with scalloped edges in alternating red and white yarn, adorned with delicate beadwork. Paired with a matching heart-shaped crochet piece, this set showcases fine craftsmanship and festive charm."
@@ -80,15 +44,6 @@
       "stock": 15,
       "image": "1782049110276-WhatsApp Image 2026-06-03 at 7.30.02 PM.webp",
       "description": "Unique handmade round handbag designed like a vibrant red flower, paired with a striking strap of large white beads for a bold and elegant statement piece."
-    },
-    {
-      "id": 28,
-      "name": "test",
-      "price": "123",
-      "category": "Knitted",
-      "stock": 12,
-      "image": "1782389437341-Screenshot_2026-06-22_122857.png",
-      "description": "faytsfdya"
     }
   ],
   "orders": [
@@ -146,6 +101,171 @@
       "status": "Delivered",
       "created_at": "2026-06-22T17:25:18.000Z",
       "total": "350.00"
+    },
+    {
+      "id": 6,
+      "customer": "demo6",
+      "phone": "745895742157",
+      "email": "demo6@gmaul.com",
+      "address": "demo6",
+      "custom_requirement": "demo6",
+      "status": "1950.00",
+      "created_at": "2026-06-28T10:23:43.920Z",
+      "total": "undefined"
+    },
+    {
+      "id": 7,
+      "customer": "demo7",
+      "phone": "78945824957",
+      "email": "demo7@gmail.com",
+      "address": "demo7@",
+      "custom_requirement": "demo@",
+      "status": "180.00",
+      "created_at": "2026-06-28T10:30:57.753Z",
+      "total": "undefined"
+    },
+    {
+      "id": 8,
+      "customer": "demo9",
+      "phone": "78945824957",
+      "email": "demo9@gmail.com",
+      "address": "demo9",
+      "custom_requirement": "demo9",
+      "status": "Delivered",
+      "created_at": "2026-06-28T10:45:14.509Z",
+      "total": "undefined"
+    },
+    {
+      "id": 9,
+      "customer": "demi10",
+      "phone": "demo10",
+      "email": "demo10@gmail.com",
+      "address": "demo@10",
+      "custom_requirement": "demo@10",
+      "status": "Pending",
+      "created_at": "2026-06-28T11:50:10.803Z",
+      "total": "undefined"
+    },
+    {
+      "id": 10,
+      "customer": "demo11",
+      "phone": "7489542169",
+      "email": "demo11@gmial.com",
+      "address": "demo11",
+      "custom_requirement": "demo11",
+      "status": "430.00",
+      "created_at": "2026-06-28T12:15:58.432Z",
+      "total": "undefined"
+    },
+    {
+      "id": 11,
+      "customer": "demo13",
+      "phone": "79725485644",
+      "email": "demo123@gmail.com",
+      "address": "demo123",
+      "custom_requirement": "demo123",
+      "status": "180.00",
+      "created_at": "2026-06-28T12:56:57.505Z",
+      "total": "undefined"
+    },
+    {
+      "id": 12,
+      "customer": "demo15",
+      "phone": "745896425",
+      "email": "demo15@gmail.com",
+      "address": "demo15",
+      "custom_requirement": "demo15",
+      "status": "799.00",
+      "created_at": "2026-06-28T13:02:21.983Z",
+      "total": "undefined"
+    },
+    {
+      "id": 13,
+      "customer": "demo16",
+      "phone": "demo16",
+      "email": "demo16@gmail.com",
+      "address": "demo16",
+      "custom_requirement": null,
+      "status": "180.00",
+      "created_at": "2026-06-28T16:06:48.008Z",
+      "total": "undefined"
+    },
+    {
+      "id": 14,
+      "customer": "demo17",
+      "phone": "demo17",
+      "email": "demo17@gmial.com",
+      "address": "demo17",
+      "custom_requirement": "demo17",
+      "status": "650.00",
+      "created_at": "2026-06-28T16:11:35.589Z",
+      "total": "undefined"
+    },
+    {
+      "id": 15,
+      "customer": "demo18",
+      "phone": "demo18",
+      "email": "demo18",
+      "address": "demo18demo18",
+      "custom_requirement": "demo18",
+      "status": "650.00",
+      "created_at": "2026-06-28T16:18:11.009Z",
+      "total": "undefined"
+    },
+    {
+      "id": 16,
+      "customer": "demo18",
+      "phone": "demo18",
+      "email": "demo18",
+      "address": "demo18",
+      "custom_requirement": "demo18",
+      "status": "799.00",
+      "created_at": "2026-06-28T16:28:21.640Z",
+      "total": "undefined"
+    },
+    {
+      "id": 17,
+      "customer": "demo20",
+      "phone": "demo20",
+      "email": "demo20",
+      "address": "demo20",
+      "custom_requirement": "demo20",
+      "status": "1449.00",
+      "created_at": "2026-06-28T16:32:06.688Z",
+      "total": "undefined"
+    },
+    {
+      "id": 18,
+      "customer": "demo20",
+      "phone": "demo20",
+      "email": "demo20",
+      "address": "demo20",
+      "custom_requirement": "demo20",
+      "status": "799.00",
+      "created_at": "2026-06-28T16:35:01.387Z",
+      "total": "undefined"
+    },
+    {
+      "id": 19,
+      "customer": "demo21",
+      "phone": "demo21",
+      "email": "demo21",
+      "address": "demo21",
+      "custom_requirement": "demo21",
+      "status": "799.00",
+      "created_at": "2026-06-28T16:40:22.576Z",
+      "total": "undefined"
+    },
+    {
+      "id": 20,
+      "customer": "demo25",
+      "phone": "demo22",
+      "email": "demo22",
+      "address": "demo22",
+      "custom_requirement": "demo22",
+      "status": "1449.00",
+      "created_at": "2026-06-28T16:41:11.560Z",
+      "total": "undefined"
     }
   ],
   "customers": [
@@ -169,6 +289,76 @@
       "phone": "7489542658",
       "address": "kjsdtest4",
       "email": "dsr@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "demo6",
+      "phone": "745895742157",
+      "email": "demo6@gmaul.com",
+      "address": "demo6"
+    },
+    {
+      "id": 5,
+      "name": "demi10",
+      "phone": "demo10",
+      "email": "demo10@gmail.com",
+      "address": "demo@10"
+    },
+    {
+      "id": 6,
+      "name": "demo11",
+      "phone": "7489542169",
+      "email": "demo11@gmial.com",
+      "address": "demo11"
+    },
+    {
+      "id": 7,
+      "name": "demo13",
+      "phone": "79725485644",
+      "email": "demo123@gmail.com",
+      "address": "demo123"
+    },
+    {
+      "id": 8,
+      "name": "demo16",
+      "phone": "demo16",
+      "email": "demo16@gmail.com",
+      "address": "demo16"
+    },
+    {
+      "id": 9,
+      "name": "demo17",
+      "phone": "demo17",
+      "email": "demo17@gmial.com",
+      "address": "demo17"
+    },
+    {
+      "id": 10,
+      "name": "demo18",
+      "phone": "demo18",
+      "email": "demo18",
+      "address": "demo18demo18"
+    },
+    {
+      "id": 11,
+      "name": "demo20",
+      "phone": "demo20",
+      "email": "demo20",
+      "address": "demo20"
+    },
+    {
+      "id": 12,
+      "name": "demo21",
+      "phone": "demo21",
+      "email": "demo21",
+      "address": "demo21"
+    },
+    {
+      "id": 13,
+      "name": "demo25",
+      "phone": "demo22",
+      "email": "demo22",
+      "address": "demo22"
     }
   ],
   "settings": {
