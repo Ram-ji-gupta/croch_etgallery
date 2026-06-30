@@ -14,7 +14,7 @@ try {
   fs.mkdirSync(destDir, { recursive: true });
 
   // Define what to copy (directories and file patterns)
-  const directoriesToCopy = ['css', 'js', 'images', 'components', 'admin'];
+  const directoriesToCopy = ['css', 'js', 'images', 'components'];
   const filesToCopy = [
     'index.html',
     'about.html',

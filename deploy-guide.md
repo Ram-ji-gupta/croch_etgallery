@@ -1,11 +1,11 @@
-# WoolCraft Studio — Complete Deployment Guide
+# croch_etgallery — Complete Deployment Guide
 
 ---
 
 ## YOUR LOCAL CREDENTIALS (From .env)
 - MySQL User: `root`
 - MySQL Password: `rAmjig861@`
-- MySQL Database: `woolcraft`
+- MySQL Database: `croch_etgallery`
 - JWT Secret: `change_this_to_a_strong_secret_key_in_production_123!@#$`
 
 ---
@@ -27,19 +27,19 @@ Follow these steps if you only have the MySQL console:
 
 3. **Export your database**:
    ```cmd
-   mysqldump -u root -prAmjig861@ woolcraft > woolcraft-database.sql
+   mysqldump -u root -prAmjig861@ croch_etgallery > croch_etgallery-database.sql
    ```
 
-4. Your database is now saved as `woolcraft-database.sql` in `C:\xampp\mysql\bin`—copy this to your project folder!
+4. Your database is now saved as `croch_etgallery-database.sql` in `C:\xampp\mysql\bin`—copy this to your project folder!
 
 ### Option 2: Using phpMyAdmin
 
 If you have phpMyAdmin:
 1. Open `http://localhost/phpmyadmin`
-2. Select your database `woolcraft`
+2. Select your database `croch_etgallery`
 3. Click **Export**
 4. Choose "Quick" export method, format "SQL"
-5. Click **Go** and save as `woolcraft-database.sql`
+5. Click **Go** and save as `croch_etgallery-database.sql`
 
 ---
 
@@ -89,7 +89,7 @@ If you have phpMyAdmin:
 1. Go to https://planetscale.com, sign up, and create a new database
 2. In PlanetScale dashboard:
    - Click "Connect" → Get your credentials (host, user, password, database name)
-   - Click "Import" → Upload your `woolcraft-database.sql` file
+   - Click "Import" → Upload your `croch_etgallery-database.sql` file
 3. Save your PlanetScale credentials for later
 
 ### Part 3: Deploy Backend to Render
@@ -146,7 +146,7 @@ If you have phpMyAdmin:
 2. Create a new database and user
 3. Assign the user to the database with ALL PRIVILEGES
 4. Go to **phpMyAdmin** in cPanel
-5. Select your new database → Click **Import** → Upload `woolcraft-database.sql`
+5. Select your new database → Click **Import** → Upload `croch_etgallery-database.sql`
 
 ### Step 3: Configure Backend in CPanel
 1. Update `backend/.env` with your cPanel MySQL credentials

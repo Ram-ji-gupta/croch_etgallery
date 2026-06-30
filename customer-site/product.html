@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View product details — handmade wool craft from croch_etgallery. See pricing, description, stock status and order via WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#7a4f3d">
+
+  <title>Product Details – croch_etgallery</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <script src="js/dark-mode.js"></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" aria-label="croch_etgallery Home">🧶 croch_etgallery</a>
+
+    <button class="mobile-menu" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="cart.html" aria-label="Shopping cart">🛒 (<span id="cartCount">0</span>)</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <button id="darkModeToggle" class="nav-filter" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+    <section class="product-details">
+      <div class="product-image">
+        <img src="images/Hand_band.webp" alt="Product image" id="productImage" width="420" height="320" decoding="async">
+      </div>
+
+      <div class="product-info">
+        <h1 id="productName">Loading…</h1>
+        <p class="price" id="productPrice">₹—</p>
+        <p id="productDescription">Loading product details…</p>
+        <p id="productStatus" style="margin-top:12px; font-weight:700;"></p>
+
+        <button type="button" id="addToCartBtn" onclick="addToCart(0)">Add To Cart</button>
+
+        <!-- <a href="https://wa.me/917973856211" class="whatsapp-btn" id="waOrderBtn" target="_blank" rel="noopener noreferrer">
+          Order On WhatsApp
+        </a> -->
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 croch_etgallery. All rights reserved.</p>
+    <p>
+      <a href="about.html">About</a> ·
+      <a href="contact.html">Contact</a> ·
+      <a href="faq.html">FAQ</a> ·
+      <a href="terms-and-conditions.html">Terms</a> ·
+      <a href="privacy-policy.html">Privacy</a> ·
+      <a href="return-policy.html">Return Policy</a>
+    </p>
+  </footer>
+
+  <!-- Floating Instagram & WhatsApp -->
+  <a href="https://www.instagram.com/croch_etgallery706?igsh=YTJ6MTA1MXlzYXkz" class="floating-instagram" target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+<a href="https://wa.me/917973856211" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <path fill="currentColor" d="M20.52 3.48A11.17 11.17 0 0 0 12 0C5.37 0 .01 5.36.01 11.99c0 1.93.47 3.84 1.37 5.52L0 24l6.7-1.76a11.94 11.94 0 0 0 5.3 1.26h.01C18.63 23.5 24 18.14 24 11.51c0-3.06-1.2-5.93-3.48-8.03ZM12 22c-1.72 0-3.4-.45-4.87-1.3l-.36-.2-3.58.94.96-3.47-.22-.37A9.97 9.97 0 0 1 2 11.99C2 6.48 6.48 2 11.99 2c2.7 0 5.23 1.04 7.15 2.95A9.98 9.98 0 0 1 22 11.51C22 17.02 17.52 22 12 22Zm6.06-6.2c-.33-.16-1.95-.96-2.25-1.07-.3-.11-.52-.16-.74.16-.22.33-.85 1.07-1.04 1.29-.19.22-.39.25-.72.09-.33-.16-1.4-.52-2.66-1.64-.98-.87-1.64-1.95-1.83-2.28-.19-.33-.02-.5.14-.66.14-.14.33-.39.5-.58.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.58-.08-.16-.74-1.78-1.01-2.44-.26-.62-.53-.54-.74-.55h-.63c-.22 0-.58.08-.88.41-.3.33-1.14 1.11-1.14 2.7 0 1.58 1.17 3.11 1.33 3.32.16.22 2.3 3.51 5.58 4.92.78.34 1.4.54 1.88.69.79.25 1.51.22 2.08.13.64-.1 1.95-.8 2.23-1.58.28-.78.28-1.45.19-1.58-.09-.13-.33-.2-.66-.36Z"/>
+    </svg>
+  </a>
+
+  <div class="orb orb1" aria-hidden="true"></div>
+  <div class="orb orb2" aria-hidden="true"></div>
+  <div class="orb orb3" aria-hidden="true"></div>
+
+  <!-- JS -->
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/cart.js"></script>
+
+  <script>
+    async function loadProductFromQuery() {
+      const params = new URLSearchParams(window.location.search);
+      const id = Number(params.get('id'));
+
+      const img = document.getElementById('productImage');
+      const title = document.getElementById('productName');
+      const price = document.getElementById('productPrice');
+      const desc = document.getElementById('productDescription');
+      const status = document.getElementById('productStatus');
+      const btn = document.getElementById('addToCartBtn');
+      const waLink = document.getElementById('waOrderBtn');
+
+      if (!Number.isFinite(id) || id <= 0) {
+        window.location.replace('products.html');
+        return;
+      }
+
+      try {
+        const res = await fetch(WC.api(`/api/products/${id}`));
+        if (!res.ok) throw new Error(`Product not found (HTTP ${res.status})`);
+        const p = await res.json();
+        if (!p || !p.id) throw new Error('Invalid product data');
+
+        const imgSrc = WC.img(p.image);
+
+        if (img && imgSrc) { img.src = imgSrc; img.alt = p.name || ''; }
+        if (title) title.textContent = p.name || '';
+        if (price) price.textContent = `₹${p.price ?? 0}`;
+        if (desc) desc.textContent = p.description || '';
+
+        if (status) {
+          const stock = Number(p.stock) || 0;
+          if (stock > 0) {
+            status.textContent = `In Stock (${stock} available)`;
+            status.style.color = '#27ae60';
+          } else {
+            status.textContent = 'Out of Stock';
+            status.style.color = '#e74c3c';
+          }
+        }
+
+        document.title = `${p.name || 'Product'} – croch_etgallery`;
+
+        // Canonical URL for product
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+          canonical = document.createElement('link');
+          canonical.rel = 'canonical';
+          document.head.appendChild(canonical);
+        }
+        canonical.href = `https://croch_etgallery.com/product.html?id=${p.id}`;
+
+        if (!Array.isArray(window.products)) window.products = [];
+        if (!window.products.find(x => x.id === p.id)) window.products.push(p);
+
+        if (btn) btn.setAttribute('onclick', `addToCart(${p.id})`);
+
+        if (waLink) {
+          const msg = `Hi! I'm interested in "${p.name}" (₹${p.price}). Is it available?`;
+          waLink.href = WC.waLink(msg);
+        }
+      } catch (e) {
+        console.error('[product] load error:', e);
+        if (title) title.textContent = 'Product not found';
+        if (desc) desc.textContent = 'Could not load product details. Please try again.';
+        if (btn) btn.style.display = 'none';
+      }
+    }
+
+    loadProductFromQuery();
+  </script>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

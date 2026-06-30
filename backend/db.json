@@ -44,6 +44,15 @@
       "stock": 15,
       "image": "1782049110276-WhatsApp Image 2026-06-03 at 7.30.02 PM.webp",
       "description": "Unique handmade round handbag designed like a vibrant red flower, paired with a striking strap of large white beads for a bold and elegant statement piece."
+    },
+    {
+      "id": 28,
+      "name": "deom12",
+      "price": "123",
+      "category": "Bags",
+      "stock": 12,
+      "image": "1782797313136-WhatsApp_Image_2026-06-16_at_11.06.31_AM.webp",
+      "description": "demo12"
     }
   ],
   "orders": [
@@ -266,6 +275,17 @@
       "status": "1449.00",
       "created_at": "2026-06-28T16:41:11.560Z",
       "total": "undefined"
+    },
+    {
+      "id": 21,
+      "customer": "John Doe",
+      "phone": "1234567890",
+      "email": "john@example.com",
+      "address": "123 Street, City",
+      "custom_requirement": "Gift wrap",
+      "status": "799.00",
+      "created_at": "2026-06-30T05:00:53.414Z",
+      "total": "undefined"
     }
   ],
   "customers": [
@@ -363,7 +383,7 @@
   ],
   "settings": {
     "id": 1,
-    "store_name": "WoolCraft-1",
+    "store_name": "croch_etgallery-1",
     "phone": "8957265847",
     "email": "",
     "address": "Jaipur.Rajasthan",

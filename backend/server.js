@@ -33,8 +33,10 @@ const corsOptions = {
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5500",
     "http://localhost:8080",
-    "http://127.0.0.1:8080"
-  ], // Allow local frontend origin
+    "http://127.0.0.1:8080",
+    "http://localhost:8082",
+    "http://127.0.0.1:8082"
+  ], // Allow local frontend + admin origins
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));

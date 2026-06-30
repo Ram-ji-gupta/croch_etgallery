@@ -1,0 +1,10 @@
+{
+  "name": "croch_etgallery-admin",
+  "version": "1.0.0",
+  "description": "croch_etgallery Private Admin Dashboard",
+  "main": "login.html",
+  "scripts": {
+    "serve": "npx serve -l 8082 ."
+  },
+  "license": "MIT"
+}

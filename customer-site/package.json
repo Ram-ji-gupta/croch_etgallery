@@ -1,0 +1,10 @@
+{
+  "name": "croch_etgallery-storefront",
+  "version": "1.0.0",
+  "description": "croch_etgallery static e‑commerce storefront",
+  "main": "index.html",
+  "scripts": {
+    "serve": "npx serve -l 8080 ."
+  },
+  "license": "MIT"
+}

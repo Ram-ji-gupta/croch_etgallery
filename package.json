@@ -1,12 +1,14 @@
 {
   "name": "wollen-craft",
   "version": "1.0.0",
-  "description": "WoolCraft static e‑commerce site",
+  "description": "croch_etgallery static e‑commerce site",
   "main": "index.html",
   "scripts": {
     "build": "node scripts/build.js",
     "serve": "npx serve -s build -l 8080",
-    "serve:dev": "npx serve -l 8080 ."
+    "serve:dev": "npx serve -l 8080 customer-site",
+    "serve:customer": "npx serve -l 8080 customer-site",
+    "serve:admin": "npx serve -l 8082 admin-site"
   },
   "author": "",
   "license": "MIT",
